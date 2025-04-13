@@ -1,11 +1,15 @@
 
 import darkdetect
+import os
 import pywinstyles
-import sys
+import subprocess
 import sv_ttk
+import sys
 import tkinter
 from tkinter import ttk
-from pytube import YouTube
+from pytubefix import YouTube
+
+
 
 class GUI:
     def __init__(self):
@@ -18,27 +22,27 @@ class GUI:
         self.tab3 = ttk.Frame(self.tab_parent)
 
         label1 = ttk.Label(self.tab1, text = "Youtube Video URL:")
-        entry1 = ttk.Entry(self.tab1)
-        button1 = ttk.Button(self.tab1, text="Convert")
+        self.entry1 = ttk.Entry(self.tab1)
+        button1 = ttk.Button(self.tab1, text="Convert", command=self.yt_to_mp4)
         
         label1.grid(row=0, column=1, padx=15, pady=15)
-        entry1.grid(row=1, column=1, padx=15, pady=15)
+        self.entry1.grid(row=1, column=1, padx=15, pady=15)
         button1.grid(row=2, column=1, padx=15, pady=15)
 
         label2 = ttk.Label(self.tab2, text = "Youtube Video URL:")
-        entry2 = ttk.Entry(self.tab2)
-        button2 = ttk.Button(self.tab2, text="Convert")
+        self.entry2 = ttk.Entry(self.tab2)
+        button2 = ttk.Button(self.tab2, text="Convert", command=self.yt_to_mp3)
         
         label2.grid(row=0, column=1, padx=15, pady=15)
-        entry2.grid(row=1, column=1, padx=15, pady=15)
+        self.entry2.grid(row=1, column=1, padx=15, pady=15)
         button2.grid(row=2, column=1, padx=15, pady=15)
 
         label3 = ttk.Label(self.tab3, text = "Spotify URL:")
-        entry3 = ttk.Entry(self.tab3)
-        button3 = ttk.Button(self.tab3, text="Convert")
+        self.entry3 = ttk.Entry(self.tab3)
+        button3 = ttk.Button(self.tab3, text="Convert", command=self.spotify_to_mp3)
         
         label3.grid(row=0, column=1, padx=15, pady=15)
-        entry3.grid(row=1, column=1, padx=15, pady=15)
+        self.entry3.grid(row=1, column=1, padx=15, pady=15)
         button3.grid(row=2, column=1, padx=15, pady=15)
 
         self.tab_parent.add(self.tab1, text = "Youtube to MP4")
@@ -59,8 +63,28 @@ class GUI:
             self.root.wm_attributes("-alpha", 0.99)
             self.root.wm_attributes("-alpha", 1)
 
-    # def yt_to_mp4(self):
-    #     yt = YouTube.
+    def yt_to_mp4(self):
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        video = YouTube(self.entry1.get())
+        stream = video.streams.filter(adaptive=True).order_by("resolution").last()
+        stream.download(filename=f"{video.title}.mp4", output_path=f"{dir_path}/yt-mp4")
+
+    def yt_to_mp3(self):
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        video = YouTube(self.entry2.get())
+        stream = video.streams.get_audio_only()
+        stream.download(filename=f"{video.title}.mp3", output_path=f"{dir_path}/yt-mp3")
+
+    def spotify_to_mp3(self):
+        try:
+            os.makedirs("spot-mp3")
+        except:
+            pass
+        command = ["spotdl", "download", self.entry3.get()]
+        os.chdir("spot-mp3")
+        p = subprocess.Popen(command)
+        p.wait()
+
 
 
 if __name__ == "__main__":
