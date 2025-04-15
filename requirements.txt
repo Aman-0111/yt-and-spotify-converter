@@ -1,0 +1,6 @@
+darkdetect==0.8.0
+moviepy==1.0.3
+pywinstyles==1.8
+sv-ttk==2.6.0
+pytubefix==8.12.3
+spotdl==4.2.11
