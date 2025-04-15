@@ -1,6 +1,6 @@
 # Youtube and Spotify Converter
 
-This is a simple desktop application that converts YouTube videos to either MP4 (with audio) or MP3 and also converts Spotify tracks to MP3 using the command-line tool [spotdl](https://github.com/ritchi/spotify-downloader). The program utilizes a simple Tkinter-based GUI to input URLs and select desired output options.
+This is a simple desktop application that converts YouTube videos to either MP4 (with audio) or MP3 and also converts Spotify tracks to MP3 using the command-line tool [spotdl](https://github.com/spotDL/spotify-downloader). The program utilizes a simple Tkinter-based GUI to input URLs and select desired output options.
 
 ## Features
 
@@ -19,7 +19,7 @@ Make sure the following prerequisites are met before running the program:
 
 - **Python 3.7+** – This program is written in Python.
 - **FFmpeg** – Required by `moviepy` and `spotdl` for processing audio and video.  
-  - **Windows:** Download from the [official website](https://ffmpeg.org/download.html) or install via [Chocolatey](https://chocolatey.org/) with `choco install ffmpeg`.
+  - **Windows:** Download from the [official website](https://ffmpeg.org/download.html), install via [Chocolatey](https://chocolatey.org/) with `choco install ffmpeg` or `spotdl --download-ffmpeg`.(Note, I am unsure if using spotDL will meet the requirements for moviepy, and this must be done after the requirements.txt is installed if spotDL is not already installed.)
   - **macOS:** Install using Homebrew: `brew install ffmpeg`.
   - **Linux:** Use your package manager, e.g., `sudo apt-get install ffmpeg`.
 
