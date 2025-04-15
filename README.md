@@ -34,10 +34,34 @@ Make sure the following prerequisites are met before running the program:
 
 2. **Create a Virtual Environment (optional but recommended):**
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+   - **Using CMD on Windows:**
+   
+     ```cmd
+     python -m venv venv
+     venv\Scripts\activate.bat
+     ```
+   
+   - **Using PowerShell on Windows:**
+     
+     If you encounter an execution policy error, run:
+     
+     ```powershell
+     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+     ```
+     
+     Then, create and activate the virtual environment:
+     
+     ```powershell
+     python -m venv venv
+     .\venv\Scripts\Activate.ps1
+     ```
+   
+   - **On macOS or Linux:**
+   
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
 
 3. **Install the Required Packages:**
 
