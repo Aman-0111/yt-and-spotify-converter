@@ -95,7 +95,7 @@ Make sure the following prerequisites are met before running the program:
 2. **Using the GUI:**
 
    - **Youtube to MP4 Tab:**  
-     Enter the YouTube video URL, select your desired resolution from the dropdown, and click **Convert**. The video and audio streams will be merged into a final MP4 file.
+     Enter the YouTube video URL, select your desired resolution from the dropdown, and click **Convert**. The progress bar for the initial download of the video and audio files will appear in the Tkinter window. Once the files are downloaded, the merging process starts, and its progress bar will be displayed in the terminal. The final MP4 file will be created after merging the two streams.
 
    - **Youtube to MP3 Tab:**  
      Enter the YouTube video URL and click **Convert** to download the audio as an MP3 file.
