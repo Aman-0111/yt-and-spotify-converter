@@ -28,9 +28,9 @@ Make sure the following prerequisites are met before running the program:
 1. **Clone the repository** (if applicable):
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
-    ```
+   git clone https://github.com/Aman-0111/yt-and-spotify-converter.git
+   cd yt-and-spotify-converter
+   ```
 
 2. **Create a Virtual Environment (optional but recommended):**
 
